@@ -1,0 +1,144 @@
++++
+title = "KiCad 5 – a new generation"
+date = "2018-07-22"
+aliases = [
+    "/post/release-5.0.0/"
+]
+categories = [
+    "Release Notes"
+]
++++
+
+Almost a year after the release of KiCad 4.0.7, the KiCad development
+team is proud to present a new and improved KiCad 5.0 release!
+
+The stable release version 5.0.0 is made from the
+https://git.launchpad.net/kicad/log/?h=5.0[stable 5.0] branch.
+
+KiCad binaries should be available now or in the very near future for
+download for Windows, macOS and Linux.  See the
+http://kicad-pcb.org/download/[download page] for guidance.
+
+Instructions for packagers can be found on
+http://kicad-pcb.org/download/source/[the download page describing how
+to build from source ]. Below are also some packaging
+<<packaging-changes,packaging related changes>> since the 4.0 releases.
+
+The official KiCad libraries have also seen a lot of improvement in
+management, style and consistency by the librarians.  Read more about
+this on the http://kicad-pcb.org/libraries/download/[new library
+section on the website.]
+
+Thank you to all developers, packagers, librarians, document writers,
+translators, and everyone else who helped make this release possible.
+
+NOTE: The macOS installer is not quite ready. There are a few minor
+issues that needs to be addressed.
+
+== New features in KiCad 5.0.0
+
+=== Project-wide
+* New libraries for symbols, footprints and 3D models (parts adhere to the KiCad
+  Library Convention (KLC) and are organized differently than in V4 libraries)
+** Library changes automatically updated on the
+   http://kicad-pcb.org/libraries/download/[library page of the KiCad website]
+* New 3D viewer
+* New 3D model plugin architecture
+** Now supports STEP and IGES viewer
+** STEP assembly export from STEP and IGES inputs
+* Support for arbitrary color schemes (GerbView and PcbNew: in modern canvases only)
+* New highlighting style for disambiguating selections for greater clarity
+* Improved zoom behavior when using trackpads in MacOS
+* Some improvements with hidpi support
+* Simple math equations in some input fields
+* Crossprobing with highlighting
+* Significant improvements in symbol, footprint and 3D model libraries
+* More templates for common development platforms such as Arduino and Raspberry Pi
+* Environment variable editor for managing internal environment variables
+* Icon improvements
+* Footprint libraries installed locally and the Github plugin is no longer the default
+* Custom color picker dialog
+
+=== KiCad
+
+* Direct import of Eagle projects
+
+=== Eeschema
+
+* Autoplace for fields (https://www.youtube.com/watch?v=32FKnrKxe4Y)
+* SPICE simulation support via ngspice
+* New symbol chooser with optional footprint viewer
+* Partial clipboard support that allows moving symbols and nets between hierarchical sheets
+* Improved wire, bus, and junction handling
+* Net highlighting with same net highlighting in board editor (modern canvas only)
+* Table view for editing symbol fields
+* Symbol library management with library table to eliminate symbol name clashes
+* Custom graphic line type and color support
+* Completely redesigned symbol library editor
+* Direct update of board without need for intermediate netlist
+* Unified configuration dialog
+* Copy/cut/paste between schematic library symbols
+* Tree widget to browse symbols in the symbol editor
+* Dashed, dotted and dash-dot line support to DXF plot in Eeschema
+* File browser for the Symbol Library Table dialog
+
+=== PcbNew
+
+* Flip board option
+* Spread out when loading netlist with new parts (Modern canvas only)
+* You can now specify a reference point when using the Move Exactly feature
+* Clipboard support that allows copying selections between boards or as text
+* Rounded rectangle pad support.
+* Custom pad shapes
+* Many enhancements to the modern (formerly OpenGL and Cairo) canvases, including:
+** New measurement tool
+** Vias can now be placed freely (for stitching, etc)
+** Improvements to drag selection:
+*** A drag from left to right will select items that are completely enclosed
+*** A drag from right to left will select any items that are partially touched by the
+    selection rectangle
+*** Hold the SHIFT key while dragging to add items to the current selection
+*** Hold the CTRL key while dragging to remove items from the current selection
+** Grid settings are now fully functional
+** Always-on cursor feature now available
+** Local ratsnest feature now available
+** Microwave tools now available
+** Change layer with via feature now available
+** Change Footprint feature now available
+** Improvements to the array tool
+** Improvements to the arc drawing tool
+** Improvements to the zone drawing and editing tools
+* Net highlight mode highlights net in schematic editor (Modern canvas only),
+* Transparency support in modern canvases
+* Update changes from schematic editor without intermediate netlist file
+* Anti-aliased fonts (modern canvas only)
+* Improved Python console
+* Support for gerber X2 extensions
+* Support for gerber job files
+
+=== GerbView
+
+* Support for modern (OpenGL and Cairo) canvases
+* Transparency support in modern canvases
+* New measurement tool
+* Ability to pan using a drag of the right mouse button
+* Support for loading gerber X2 extensions
+* Support for loading gerber job files
+
+[[packaging-changes]]
+== Packaging Changes
+In regard to packaging the KiCad binaries, not a lot has changed.  You
+should mostly be able to bump the package version, but some new major
+dependencies have been added with the SPICE similation and support for
+IGES and STEP 3D models. We now depend on Open Cascade (by default OCE,
+but OCCT should also work.) We also now depend upon ngspice built as a
+library.
+
+Beyond dependencies, the library has had a major restructuring such that the
+footprints are in one git repository and the templates have been separated
+out to its own repo as well. See http://kicad-pcb.org/download/source/
+for all relevant information.
+
+We hope you enjoy version 5 of KiCad.
+
+**The KiCad Development Team**
